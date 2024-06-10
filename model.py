@@ -635,7 +635,7 @@ class WhisperSegmenterFast(SegmenterBase):
             self.device_list = [ 0,]
             self.model_list = [ ctranslate2.models.Whisper(model_path, device = device, compute_type = compute_type) ]
         else:
-            compute_type = "float16"
+            compute_type = "float32"
             self.device_list = device_ids
             self.model_list = [ ctranslate2.models.Whisper(model_path, device = device, device_index = idx, compute_type = compute_type) for idx in device_ids ]
         self.tokenizer_list = [ WhisperTokenizer.from_pretrained(model_path+"/hf_model", language = "english" ) for _ in self.device_list ]

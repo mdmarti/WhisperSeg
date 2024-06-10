@@ -13,7 +13,7 @@ import re
 import matplotlib.colors as mcolors
 from matplotlib.patches import Patch
 import matplotlib.cm as cm
-
+import matplotlib as mpl
 
 class WhisperSegFeatureExtractor( WhisperFeatureExtractor ):
     def __init__(self, sr, spec_time_step, min_frequency = None, max_frequency = None, chunk_length = 30 ):
@@ -69,7 +69,7 @@ class SpecViewer:
                     unique_colors = np.concatenate( [unique_colors, color_arr[np.newaxis,:]], axis = 0 )
         self.colors = unique_colors[ unique_colors.mean(axis = 1) < 0.8, : ]
         
-        self.cmap = cm.get_cmap("magma")
+        self.cmap = mpl.colormaps.get_cmap("magma")
             
     """"
     The following functions are used for implement an interactive visulization function to see the spectrogram and the label
